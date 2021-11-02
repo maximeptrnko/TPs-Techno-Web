@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <a href="/" class="navbar-brand">To Do List <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/></svg>
+    </a>
+</nav>
+
+<div class="container">
+
+    <!-- space -->
+    <div><p> </p></div>
+
+
+    <div class="alert alert-secondary" role="alert"> Error : {{e}} </div>
+    <div class="alert alert-light" role="alert"> Sorry there is an error, please return to the homepage </div>
+
+
+    <!-- space -->
+    <div><p> </p></div>
+    
+    <div class="position-absolute top-50 start-0 translate-middle"> 
+        <a href="/" class="btn btn-info btn-lg" role="button">Home page</a>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+        
+
+
+
+
+ 
