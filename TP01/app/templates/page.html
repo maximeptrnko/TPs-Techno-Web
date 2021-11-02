@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>ToDo List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Maxime.P">
+    <title>TODO APP</title>
+
+    <style>
+        body {
+          background-color: rgb(236, 202, 169);
+          max-width: 600px;
+          margin: auto;
+          font-family:'Courier New', Courier, monospace;
+        }
+
+        .task {
+            text-align: center;
+            text-indent: 25%;
+            
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 200%;
+            
+        }
+
+        form {
+            text-align: center;
+        
+        }
+
+        /* li{
+            border: 2px solid rgb(68, 32, 3);
+            border-radius: 7px;
+            margin: 0 0 10px 0;
+            max-width: 300px;
+            text-align: center;
+        } */
+
+    </style>
+</head>
+
+
+
+<body>
+    <h1> To Do List</h1>
+    {% if tasks %}
+        <h2>Number of task(s) : {{tasks|length}}</h2> {#le nombre de taches fait la taille du dico#}
+            <ul>
+                {% for (key, val) in tasks.items()  %}
+                <li><input type="checkbox"> {{val['text']}} <a href="/delete/{{ key }}">[X] </a></li>
+            {% endfor %}
+            </ul>
+    {% else %}
+            <p>There is no task ... Try to add a new task below</p>
+    {% endif %}    
+
+    <h2>Add a task</h2>
+        <form action="/add" method="POST">
+            <p>
+                <input type="text" name="todoitem" id="task" placeholder="Enter a new task" size="30" />
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+</body>
+</html>
