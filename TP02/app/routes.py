@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, request, redirect, url_for,flash,json
-from werkzeug.exceptions import HTTPException
+import uuid
 
 from app.model import dict_tasks
 
@@ -25,12 +25,15 @@ def addTask():
         if request.form["todoitem"] == "" :
             return render_template("page.html",tasks = dict_tasks)
 
-        # initialisation d'id de tache
-        if not dict_tasks['tasks_to_do'].keys():
-            num_task = 1
-        # incrementation d'id de tache
-        else :  
-           num_task = len(dict_tasks['tasks_to_do']) + 1
+        # id de la tache
+        num_task = int(uuid.uuid4().int & (1 << 32) - 1)
+        
+
+        if num_task in dict_tasks['tasks_to_do'].keys() and num_task in dict_tasks['tasks_done'].keys():
+            num_task = int(uuid.uuid4().int & (1 << 32) - 1)
+
+    
+
 
         # ajout de la tache
         dict_tasks['tasks_to_do'][num_task] = _task
@@ -45,6 +48,9 @@ def addTask():
 
 @app.route("/modify/<int:key>", methods=["GET", "POST"])
 def modifyTask(key):
+
+    print('MODIFY CALLED ---------------------')
+
     if request.method == "POST":
         new_input = {'text': request.form["modifitem"]}
 
